@@ -1,13 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\MainController;
 
-// Главная страница
-Route::get('/', [PageController::class, 'home'])->name('home');
+// гл стр
+Route::get('/', [MainController::class, 'index'])->name('home');
 
-// Страница "О нас"
-Route::get('/about', [PageController::class, 'about'])->name('about');
-
-// Страница "Контакты" (передаем данные в метод view)
-Route::get('/contacts', [PageController::class, 'contacts'])->name('contacts');
+// стр просмотра  (динамический маршрут)
+Route::get('/image/{image}', [MainController::class, 'showImage'])->name('image.show');
