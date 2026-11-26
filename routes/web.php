@@ -18,5 +18,5 @@ Route::get('/image/{image}', [MainController::class, 'showImage'])->name('image.
 Route::get('/signin', [AuthController::class, 'create'])->name('signin');
 Route::post('/signin', [AuthController::class, 'registration'])->name('signin.post');
 
-//лаба 4 (новости) 
-Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
+//лаба 4-5
+Route::resource('articles', ArticleController::class);
