@@ -35,6 +35,31 @@
                     <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Удалить?')">Удалить</button>
                 </form>
             <div class="clear"></div>
+
+            <!-- блок комментариев -->
+            <div style="margin-top: 15px; border-top: 1px dashed #ccc; padding-top: 10px;">
+                <h5>Комментарии:</h5>
+                @forelse($article->comments as $comment)
+                    <div style="margin-bottom: 10px; padding: 10px; background: #f9f9f9;">
+                        <strong>{{ $comment->author }}</strong> ({{ $comment->created_at->format('d.m.Y H:i') }})
+                        <p>{{ $comment->content }}</p>
+                        
+                        <a href="{{ route('comments.edit', $comment) }}" class="btn btn-sm btn-warning">Редактировать</a>
+                        <form action="{{ route('comments.destroy', $comment) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Удалить?')">Удалить</button>
+                        </form>
+                    </div>
+                @empty
+                    <p>Комментариев пока нет.</p>
+                @endforelse
+                
+                <!-- ссылка на добавление комментария -->
+                <a href="{{ route('comments.create', ['article_id' => $article->id]) }}" class="btn btn-sm btn-success">Добавить комментарий</a>
+            </div>
+            <!-- конец блока комментариев -->
+
         </div>
     @endforeach
     {{-- пагинация --}}

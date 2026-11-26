@@ -17,4 +17,10 @@ class Article extends Model
         'shortDesc',
         'desc',
     ];
+
+    // у статьи может быть много комментариев
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

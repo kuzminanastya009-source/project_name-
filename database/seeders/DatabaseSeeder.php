@@ -14,5 +14,7 @@ class DatabaseSeeder extends Seeder
 {
     // Создаем 10 фейковых статей
     \App\Models\Article::factory(10)->create();
+    // создаем 30 комментариев
+\App\Models\Comment::factory(30)->create();
 }
 }

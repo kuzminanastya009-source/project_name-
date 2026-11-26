@@ -5,6 +5,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CommentController;
 
 //лаба 1 
 Route::get('/about', [PageController::class, 'about'])->name('about');
@@ -20,3 +21,6 @@ Route::post('/signin', [AuthController::class, 'registration'])->name('signin.po
 
 //лаба 4-5
 Route::resource('articles', ArticleController::class);
+
+//лаб 6 (коммы)
+Route::resource('comments', CommentController::class)->except(['show']);
