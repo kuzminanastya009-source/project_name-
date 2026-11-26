@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MainController;
+use App\Http\Controllers\AuthController;
 
-// гл стр
-Route::get('/', [MainController::class, 'index'])->name('home');
+// Показ формы регистрации (GET)
+Route::get('/signin', [AuthController::class, 'create'])->name('signin');
 
-// стр просмотра  (динамический маршрут)
-Route::get('/image/{image}', [MainController::class, 'showImage'])->name('image.show');
+// Обработка формы (POST)
+Route::post('/signin', [AuthController::class, 'registration'])->name('signin.post');
